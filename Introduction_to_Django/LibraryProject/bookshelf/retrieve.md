@@ -5,7 +5,7 @@ print(all_books)
 
 # Retrieve a single object by primary key (pk) or specific field
 
-single_book = Book.objects.get(pk=1) # Assuming pk=1 exists
+single_book = Book.objects.get(title = '1984') # Assuming pk=1 exists
 print(single_book.title)
 
 # Filter objects based on conditions
