@@ -1,5 +1,5 @@
 # Get book and update author name
 
-book_to_update = Book.objects.get(title='1984')
-book_to_update.title = 'Nineteen Eighty-Four'
-book_to_update.save()
+book = Book.objects.get(title='1984')
+book.title = 'Nineteen Eighty-Four'
+book.save()
