@@ -10,6 +10,4 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='relationship_app/templates/logout.html'), name='logout' ),
     path('profile/', ProfileTemplate.as_view(), name='profile'),
     path('register', views.register, name='register'),
-  
-
 ]
