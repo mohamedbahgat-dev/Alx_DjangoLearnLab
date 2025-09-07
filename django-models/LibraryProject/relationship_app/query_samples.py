@@ -1,7 +1,8 @@
 from models import Book, Librarian, Library
 
 # list all books in alibrary
-all_books = Library.objects.all()
+books = Library.objects.get(name='my library')
+books.all()
 
 # Filtering books by author
 books_by_author = Book.objects.filter(author='Sharles Dekens')
