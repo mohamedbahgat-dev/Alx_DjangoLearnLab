@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import list_books ,  LibraryDetailView , LogInForm, SignUpForm, ProfileTemplate
+from .views import list_books ,  LibraryDetailView , LogInForm, ProfileTemplate
+from . import views
 
 urlpatterns = [
     path('books/', list_books, name='books'),
@@ -7,7 +8,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login', LogInForm.as_view(), name='login'  ),
     path('accounts/profile/', ProfileTemplate.as_view(), name='profile'),
-    path('register', SignUpForm.as_view(), name='register'  ),
+    path('register', views.register, name='register'  ),
   
 
 ]
