@@ -1,7 +1,7 @@
 from models import Book, Librarian, Library
 
 # list all books in alibrary
-books = Library.objects.get(name='my library')
+books = Library.objects.get(name='london')
 books.all()
 
 # Filtering books by author
