@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path("newbooks/", include("relationship_app.urls")),
     path("books/", include("bookshelf.urls")),
     path('admin/', admin.site.urls),
 
