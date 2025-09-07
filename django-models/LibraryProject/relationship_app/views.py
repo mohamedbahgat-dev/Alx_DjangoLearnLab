@@ -7,11 +7,11 @@ def books_list(request):
     books = Book.objects.all()
     context = {'book_list':books}
 
-    return render(request, 'book_list.html', context)
+    return render(request, 'list_books.html', context)
 
 
 class LibraryBooks(ListView):
-    template_name = 'library_books.html'
+    template_name = 'library_detail.html'
     model = Library
     context_object_name = 'library'
     
