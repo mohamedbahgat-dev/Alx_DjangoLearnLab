@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Book
 from .models import Library
-from django.contrib.auth.views import LoginView
 
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
@@ -23,8 +22,7 @@ class LibraryDetailView(DetailView):
     model = Library
     context_object_name = 'library'
     
-class LogInForm(LoginView):
-    template_name = 'relationship_app/templates/login.html'
+
 
 class ProfileTemplate(TemplateView):
     template_name = 'relationship_app/templates/profile.html'
@@ -41,5 +39,3 @@ def register(request):
         form = UserCreationForm()
     return render(request, "relationship_app/templates/register.html", {"form": form})
 
-class ProfileTemplate(TemplateView):
-    template_name = 'relationship_app/templates/profile.html'
