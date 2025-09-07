@@ -1,3 +1,5 @@
+from models import Book, Librarian, Library
+
 # list all books in alibrary
 all_books = Library.objects.all()
 
