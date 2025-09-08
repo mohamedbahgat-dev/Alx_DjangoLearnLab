@@ -30,5 +30,5 @@ def register(request):
             return redirect("profile")  # Replace "home" with your desired redirect URL
     else:
         form = UserCreationForm()
-    return render(request, "relationship_app/templates/register.html", {"form": form})
+    return render(request, "relationship_app/register.html", {"form": form})
 
