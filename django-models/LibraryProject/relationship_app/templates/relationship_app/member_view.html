@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% load static %} {% block title %}Member Area{%
+endblock %} {% block content %}
+<h1>Member Area</h1>
+<p>
+  Welcome, {{ request.user.username }} — Role: {{
+  request.user.profile.get_role_display }}
+</p>
+
+<section>
+  <h2>Your Library</h2>
+  <ul>
+    <li><a href="#">Browse catalog</a></li>
+    <li><a href="#">My loans</a></li>
+    <li><a href="#">Request a book</a></li>
+  </ul>
+</section>
+{% endblock %}

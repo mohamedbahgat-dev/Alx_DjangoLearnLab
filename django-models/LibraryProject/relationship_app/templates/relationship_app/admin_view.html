@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% load static %} {% block title %}Admin Dashboard{%
+endblock %} {% block content %}
+<h1>Admin Dashboard</h1>
+<p>
+  Welcome, {{ request.user.username }} — Role: {{
+  request.user.profile.get_role_display }}
+</p>
+
+<section>
+  <h2>Management</h2>
+  <ul>
+    <li><a href="{% url 'admin:index' %}">Site admin</a></li>
+    <li><a href="#">Manage users</a></li>
+    <li><a href="#">System settings</a></li>
+  </ul>
+</section>
+{% endblock %}

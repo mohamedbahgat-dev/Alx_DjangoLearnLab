@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% load static %} {% block title %}Librarian
+Dashboard{% endblock %} {% block content %}
+<h1>Librarian Dashboard</h1>
+<p>
+  Welcome, {{ request.user.username }} — Role: {{
+  request.user.profile.get_role_display }}
+</p>
+
+<section>
+  <h2>Library Tools</h2>
+  <ul>
+    <li><a href="#">Add / edit books</a></li>
+    <li><a href="#">Manage loans</a></li>
+    <li><a href="#">Member requests</a></li>
+  </ul>
+</section>
+{% endblock %}
