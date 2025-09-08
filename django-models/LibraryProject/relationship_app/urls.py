@@ -13,5 +13,14 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('admin-only/', admin_view.admin_view, name='admin_view'),
     path('librarian-only/', librarian_view.librarian_view, name='librarian_view'),
-    path('member-only/', member_view.member_view, name='member_view')
+    path('member-only/', member_view.member_view, name='member_view'),
+    # Add a new book (requires 'relationship_app.can_add_book')
+    path('books/add/', views.add_book, name='book_add'),
+
+    # Edit an existing book (requires 'relationship_app.can_change_book')
+    path('books/<int:pk>/edit/', views.edit_book, name='book_edit'),
+
+    # Delete an existing book (requires 'relationship_app.can_delete_book')
+    path('books/<int:pk>/delete/', views.delete_book, name='book_delete'),
+
 ]
