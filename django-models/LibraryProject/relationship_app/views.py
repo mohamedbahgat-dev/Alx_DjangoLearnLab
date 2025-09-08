@@ -20,12 +20,6 @@ class LibraryDetailView(DetailView):
     template_name = 'relationship_app/library_detail.html'
     model = Library
     context_object_name = 'library'
-    
-
-
-class ProfileTemplate(TemplateView):
-    template_name = 'relationship_app/templates/profile.html'
-
 
 def register(request):
     if request.method == "POST":
