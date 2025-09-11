@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Book
 from .models import CustomUser
 
-class CustomAdminModel(admin.ModelAdmin):
+class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
     search_fields = ('name')
 
@@ -13,7 +13,7 @@ class BookAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Book)
-admin.site.register(CustomUser, CustomAdminModel)
+admin.site.register(CustomUser, CustomUserAdmin)
 
 
 
