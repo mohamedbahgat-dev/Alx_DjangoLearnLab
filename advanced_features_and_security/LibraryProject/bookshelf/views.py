@@ -9,6 +9,11 @@ from .models import Book
 def index(request):
     return HttpResponse('welcome to book shelf')
 
+def book_list(request):
+    books = Book.objects.all()
+    context = {'book_list': books}
+    render(request, 'list_books.html', context)
+
 # create permissions views
 @permission_required('bookshelf.can_view', raise_exception=True)
 class BooksView(ListView):
