@@ -7,6 +7,7 @@ Dashboard{% endblock %} {% block content %}
 </p>
 
 <section>
+  {% csrf_token %}
   <h2>Library Tools</h2>
   <ul>
     <li><a href="#">Add / edit books</a></li>
