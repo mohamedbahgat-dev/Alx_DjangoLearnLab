@@ -7,7 +7,7 @@ from django.core.validators import MinLengthValidator, RegexValidator
 # prevent XSS. nh3 is a modern, faster alternative to bleach.
 # To use, install the library: pip install nh3
 
-class FormExample(forms.Form):
+class ExampleForm(forms.Form):
     """
     A secure example form demonstrating key security practices.
     """
