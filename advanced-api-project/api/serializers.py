@@ -14,7 +14,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 # model that serialize the author model fields with extended nested object that dynamically get all books that written by this author
 class AuthorSerializer(serializers.ModelSerializer):
-    books = BookSerializer(read_only=True, many=True)
+    books = BookSerializer(many=True, read_only=True)
     class Meta:
         model = Author
         fields = 'name'
