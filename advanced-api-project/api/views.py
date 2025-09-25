@@ -1,4 +1,5 @@
 from rest_framework import generics, status
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from .models import Book, Author
 from .serializers import BookSerializer, AuthorSerializer
@@ -11,6 +12,11 @@ class ListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer()
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    filter_backends = [SearchFilter, OrderingFilter]
+
+    search_fields = ['title', 'author']
+    order_fields = ['title','publication_year']
 
 class CreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
