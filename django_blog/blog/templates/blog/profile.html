@@ -2,9 +2,16 @@
 <title>{% block title %}Profile{% endblock title %}</title>
 
 {% block content %}
-<h2>Manage Profile</h2>
-<div>
-  <h3>Display Name: {{ user.username }}</h3>
-  <p>First Name: {{ user.first_name }}</p>
-</div>
-{% endblock content %}
+<h2>My Profile</h2>
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Update Profile</button>
+</form>
+
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endblock content %}
