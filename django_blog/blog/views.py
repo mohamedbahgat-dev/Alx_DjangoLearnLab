@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class SignUpView(CreateView):
     form_class = CustomeCreationFrom
     success_url = reverse_lazy('login')
-    template_name = 'blog/signup.html'
+    template_name = 'blog/register.html'
 
     
 class LogInView(LoginView):
