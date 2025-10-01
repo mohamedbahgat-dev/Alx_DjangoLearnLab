@@ -18,7 +18,9 @@ header {
 }
 
 header nav ul {
-  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header nav ul li {
@@ -42,4 +44,86 @@ footer {
   padding: 10px;
   background-color: #333;
   color: white;
+}
+
+.posts-title {
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.post-card {
+  border: 0px solid gray;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgba(246, 136, 84, 0.893);
+}
+
+.login-title {
+  text-align: center;
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #dad6d67b;
+  width: fit-content;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgb(181, 179, 179);
+}
+
+.login-form label,
+.login-form input {
+  margin-block: 5px;
+}
+
+.login-form input {
+  border: none;
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.login-form button {
+  margin: 10px;
+  padding: 5px;
+  border: none;
+  background-color: rgb(108, 26, 231);
+  color: white;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.home-logout {
+  margin: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(112, 31, 212);
+  color: white;
+}
+
+.reg-title {
+  text-align: center;
+  margin: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form input {
+  margin-block: 10px;
+  width: 100%;
+}
+
+.register-form li {
+  margin-left: 15px;
+  margin-bottom: 10px;
 }
