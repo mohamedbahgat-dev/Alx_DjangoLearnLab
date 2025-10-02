@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -61,7 +62,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-    
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     template_name = 'blog/post_edit.html'
@@ -82,6 +83,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         
         return redirect('login')
     
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
     model = Post
     template_name = 'blog/post_delete.html'
