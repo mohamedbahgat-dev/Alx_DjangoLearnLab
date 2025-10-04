@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm, ValidationError
 from .models import Post, Comment
 
+from django import forms
+
 class CustomeCreationFrom(UserCreationForm):
     class Meta:
         model = User
@@ -31,7 +33,7 @@ class PostForm(ModelForm):
         return content
     
 
-class CommentForm(ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
