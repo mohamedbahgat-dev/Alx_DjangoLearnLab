@@ -1,4 +1,15 @@
 {% extends 'blog/base.html' %} {% block content %}
+
+<form action="{% url 'post_search' %}" method="get" class="search-form">
+  <input
+    type="text"
+    name="q"
+    placeholder="Search posts by title, content, or tag..."
+    value="{{ query|default:'' }}"
+  />
+  <button type="submit">🔍 Search</button>
+</form>
+
 <h1 class="posts-title">Posts</h1>
 
 {% for post in posts %}
@@ -7,6 +18,11 @@
   <p>{{ post.content|slice:"0:" }}</p>
   <small>{{ post.author }}</small>
   <small>{{ post.published_date }}</small>
+  <div class="tags">
+    {% for tag in post.tags.all %}
+    <a href="{% url 'posts_by_tag' tag.name %}" class="tag">{{ tag.name }}</a>
+    {% endfor %}
+  </div>
 </div>
 
 {% endfor %} {% if user.is_authenticated %}

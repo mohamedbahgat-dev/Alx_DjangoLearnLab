@@ -21,7 +21,7 @@
     <p>{{ comment.content }}</p>
     {% if comment.author == user %}
     <a href="{% url 'edit_comment' comment.pk %}">Edit</a>
-    <a href="{% url 'delete_comment' comment.pk %}">Delete</a>
+    <a href="{% url 'comment_delete' comment.pk %}">Delete</a>
     {% endif %}
   </li>
   {% endfor %}
