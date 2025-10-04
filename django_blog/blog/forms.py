@@ -48,3 +48,4 @@ class CommentForm(forms.ModelForm):
     
         return content
 
+"TagWidget()", "widgets"
