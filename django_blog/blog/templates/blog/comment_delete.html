@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %} {% block content %}
+<h1>Delete Comment</h1>
+<form method="post" action="{% url 'comment_delete' comment.pk %}">
+  {% csrf_token %}
+  <p>Are you sure you want to delete comment?</p>
+  <input type="submit" value="Confirm" />
+</form>
+{% endblock content %}

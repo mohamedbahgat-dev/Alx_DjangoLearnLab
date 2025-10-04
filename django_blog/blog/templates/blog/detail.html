@@ -9,8 +9,35 @@
   <p>{{ post.content }}</p>
   <small>{{ post.author}},</small>
   <small>{{ post.published_date }}</small>
+  <a href="{% url 'post_edit' post.pk %}">Edit</a>
+  <a href="{% url 'post_delete' post.pk %}">Delete</a>
 </div>
-<a href="{% url 'post_edit' post.pk %}">Edit</a>
-<a href="{% url 'post_delete' post.pk %}">Delete</a>
+<h2>Comments</h2>
+{% if comments %}
+<ul>
+  {% for comment in comments %}
+  <li>
+    <strong>{{ comment.author }}</strong> on {{ comment.created_at }}
+    <p>{{ comment.content }}</p>
+    {% if comment.author == user %}
+    <a href="{% url 'edit_comment' comment.pk %}">Edit</a>
+    <a href="{% url 'delete_comment' comment.pk %}">Delete</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No comments yet.</p>
 
-{% endblock content %}
+{% endif %}
+
+<!-- Add comments -->
+{% if user.is_authenticated %}
+<h3>Add a Comment</h3>
+<form method="post" action="{% url 'add_comment' post.pk %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Post Comment</button>
+</form>
+{% else %}
+<p><a href="{% url 'login' %}">Login</a> to post a comment.</p>
+{% endif %} {% endblock content %}

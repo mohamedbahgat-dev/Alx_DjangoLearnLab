@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+<title>{% block title %}Edit comment{% endblock title %}</title>
+
+{% block content %} {% if comment.author == user %}
+<!-- Inline edit form -->
+<form action="{% url 'edit_comment' comment.pk %}" method="post">
+  {% csrf_token %}
+  <textarea name="content" rows="2">{{ comment.content }}</textarea>
+  <button type="submit">💾 Save</button>
+</form>
+{% endif %} {% endblock content %}
