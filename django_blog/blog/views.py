@@ -172,7 +172,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from .models import Post, Tag
 
-class PostsByTagView(ListView):
+class PostsByTagListView(ListView):
     model = Post
     template_name = 'blog/posts_by_tag.html'
     context_object_name = 'posts'
