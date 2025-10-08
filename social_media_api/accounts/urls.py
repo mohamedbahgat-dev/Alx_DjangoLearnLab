@@ -12,8 +12,8 @@ urlpatterns = [
     path('accounts/login/', LoginAPIView.as_view(), name='login'),
     path('accounts/profile/' ,ProfileView.as_view() ,name='profile'),
     path('', include(router.urls)),
-    path('unfollow/<int:user_id>', UserViewSet.unfollow, name='unfollow'),
-    path('follow/<int:user_id>', UserViewSet.follow, name='follow')
+    path('unfollow/<int:user_id>/', UserViewSet.unfollow, name='unfollow'),
+    path('follow/<int:user_id>/', UserViewSet.follow, name='follow')
 ]
 
 
