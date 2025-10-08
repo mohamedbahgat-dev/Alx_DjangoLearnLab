@@ -8,19 +8,19 @@ from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, Pr
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.shortcuts import get_object_or_404
 
-User = CustomUser
+
 # Create your views here.
 
 # userViewset
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
     def follow(self, request, pk=None):
         """Follow another user"""
-        target_user = get_object_or_404(User, pk=pk)
+        target_user = get_object_or_404(CustomUser, pk=pk)
         current_user = request.user
 
         if target_user == current_user:
@@ -35,7 +35,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=['post'], permission_classes=[permissions.IsAuthenticated])
     def unfollow(self, request, pk=None):
         """Unfollow a user"""
-        target_user = get_object_or_404(User, pk=pk)
+        target_user = get_object_or_404(CustomUser, pk=pk)
         current_user = request.user
 
         if target_user == current_user:
@@ -50,7 +50,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=['get'], permission_classes=[permissions.IsAuthenticated])
     def followers(self, request, pk=None):
         """List all followers of a user"""
-        user = get_object_or_404(User, pk=pk)
+        user = get_object_or_404(CustomUser, pk=pk)
         followers = user.followers.all()
         serializer = UserSerializer(followers, many=True)
         return Response(serializer.data)
@@ -58,7 +58,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=['get'], permission_classes=[permissions.IsAuthenticated])
     def following(self, request, pk=None):
         """List all users this user follows"""
-        user = get_object_or_404(User, pk=pk)
+        user = get_object_or_404(CustomUser, pk=pk)
         following = user.following.all()
         serializer = UserSerializer(following, many=True)
         return Response(serializer.data)
@@ -66,13 +66,13 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 # register view
 class RegisterAPIView(generics.CreateAPIView):
-    queryset = User.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         response =  super().create(request, *args, **kwargs)
-        user = User.objects.get(username=response.data['username'])
+        user = CustomUser.objects.get(username=response.data['username'])
         token, _ = Token.objects.get_or_create(user = user)
         return Response({
             'user': UserSerializer(user).data,
