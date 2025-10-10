@@ -141,3 +141,34 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings for Heroku deployment
+
+import dj_database_url
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # loads .env file
+
+# Heroku database configuration
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600,
+    ssl_require=True
+)
+
+# WhiteNoise setup for static files
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Security and deployment settings
+DEBUG = False
+ALLOWED_HOSTS = ['greensocial.herokuapp.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://greensocial.herokuapp.com']
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
